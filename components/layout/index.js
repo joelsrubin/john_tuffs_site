@@ -19,7 +19,7 @@ export default function Layout({ children }) {
           NEW YORK PRENUPS
       </title>
       </Head>
-      <body>
+      <div>
         <header className={styles.container}>
           <Link href="/">
             <span className={styles.title}>NEW YORK PRENUPS</span>
@@ -42,7 +42,7 @@ export default function Layout({ children }) {
         <main>
           {children}
         </main>
-      </body>
+      </div>
     </>
   );
 }
