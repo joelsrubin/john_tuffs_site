@@ -29,6 +29,8 @@
   width: 50vw;
   align-items: center;
   justify-self: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .bottomRight {
@@ -43,12 +45,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 50px;
+  margin-left: 100px;
 }
 
 .buttonContainer {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   margin-top: 50px;
 }
 

@@ -27,3 +27,11 @@
   padding-right: 50px;
 
 }
+
+.clicked {
+  color: var(--blue)
+}
+
+.unclicked {
+  color: var(--black)
+}

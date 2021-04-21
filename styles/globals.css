@@ -149,7 +149,7 @@ li:hover {
 
 button {
   background-color: transparent;
-  margin-right: 50px;
+  margin: 10px;
   border: 2px solid var(--blue);
   color: var(--blue);
   padding: 10px;

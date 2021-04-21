@@ -1,11 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from './header.module.css';
+import { useState, useEffect } from 'react';
 
 
 export default function Layout({ children }) {
 
+  const [page, setPage] = useState('Home');
+  useEffect(() => {
+    setPage(children.type.name);
+  }, [children]);
 
+  console.log('page is: ', page);
   return (
     <>
       <Head>
@@ -20,16 +26,16 @@ export default function Layout({ children }) {
           </Link>
           <ul className={styles.list}>
             <Link href="/">
-              <li>Home</li>
+              <li className={page === 'Home' ? styles.clicked : styles.unclicked}>Home</li>
             </Link>
             <Link href="about">
-              <li>About John</li>
+              <li className={page === 'About' ? styles.clicked : styles.unclicked}>About John</li>
             </Link>
             <Link href="FAQs">
-              <li>Why Get a Prenup?</li>
+              <li className={page === 'FAQ' ? styles.clicked : styles.unclicked}>Why Get a Prenup?</li>
             </Link>
             <Link href="contact">
-              <li>Contact</li>
+              <li className={page === 'Contact' ? styles.clicked : styles.unclicked}>Contact</li>
             </Link>
           </ul>
         </header>
