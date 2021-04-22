@@ -8,13 +8,38 @@ export default function Contact() {
 
 
 
-  console.log({ name, email, message });
+
+  const handleSubmit = (e) => {
+    let form = {
+      name,
+      email,
+      message
+    };
+    e.preventDefault();
+    fetch('/api/form', {
+      method: 'POST',
+      headers: {
+        'Accept': 'applicatoin/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    })
+      .then((res) => {
+        console.log('Response received');
+        setName('');
+        setEmail('');
+        setMessage('');
+      })
+      .catch((error) => console.error(error));
+
+  };
+
   return (
     <div className="container">
       <main className={styles.top}>
         <div>
           <h1 className={styles.title}>Contact</h1>
-          <form className={styles.form}>
+          <form className={styles.form} id='form'>
 
             <input type="text" name="name" onChange={(e) => setName(e.target.value)} />
             <span className={styles.label}>Name</span>
@@ -24,11 +49,11 @@ export default function Contact() {
 
             <textarea rows="10" name="message" onChange={(e) => setMessage(e.target.value)} />
             <span className={styles.label}>How can we help?</span>
-            <button className={styles.submit}>send</button>
+            <button className={styles.submit} onClick={handleSubmit}>Send</button>
           </form>
         </div>
       </main>
-      <main classname={styles.bottom}>
+      <main className={styles.bottom}>
         <div>
           <h1>Next steps</h1>
         </div>
