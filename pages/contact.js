@@ -1,10 +1,13 @@
 import styles from '../styles/contact.module.css';
 import { useState } from 'react';
+import Form from './components/Form';
+import Image from 'next/image';
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
 
 
@@ -26,12 +29,25 @@ export default function Contact() {
     })
       .then((res) => {
         console.log('Response received');
-        setName('');
-        setEmail('');
-        setMessage('');
+
       })
       .catch((error) => console.error(error));
+    setSubmitted(true);
+  };
 
+  const componentRender = () => {
+    if (submitted) {
+      return (
+        <div className={styles.sent}>
+          <h1>Submitted</h1>
+          <Image src="/blueCheck.png" alt="check" width="64" height="64" />
+        </div>
+      );
+    } else {
+      return (
+        <Form setName={setName} setEmail={setEmail} setMessage={setMessage} handleSubmit={handleSubmit} />
+      );
+    }
   };
 
   return (
@@ -39,18 +55,7 @@ export default function Contact() {
       <main className={styles.top}>
         <div>
           <h1 className={styles.title}>Contact</h1>
-          <form className={styles.form} id='form'>
-
-            <input type="text" name="name" onChange={(e) => setName(e.target.value)} />
-            <span className={styles.label}>Name</span>
-
-            <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-            <span className={styles.label}>Email</span>
-
-            <textarea rows="10" name="message" onChange={(e) => setMessage(e.target.value)} />
-            <span className={styles.label}>How can we help?</span>
-            <button className={styles.submit} onClick={handleSubmit}>Send</button>
-          </form>
+          {componentRender()}
         </div>
       </main>
       <main className={styles.bottom}>

@@ -68,3 +68,27 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+@media (max-width: 600px) {
+  .top {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 246, 250);
+    font-family: 'Mulish', sans-serif;
+
+  }
+  .bottom {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-family: 'Mulish', sans-serif;
+  }
+}

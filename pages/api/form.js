@@ -13,7 +13,10 @@ const transporter = nodemailer.createTransport({
 });
 
 export default (req, res) => {
-
+  if (!req.body.message || !req.body.name || !req.body.email) {
+    console.log("invalid input");
+    return;
+  }
   const mailData = {
     from: req.body.email,
     to: 'joelsrubin@gmail.com',
@@ -32,8 +35,6 @@ export default (req, res) => {
     }
   });
 
-
-  console.log("body: ", req.body);
   res.status(200);
 };
 
