@@ -21,11 +21,7 @@ html,body {
   @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .container {
-  /* height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+
   color: var(--black)
 }
 
@@ -113,6 +109,7 @@ li:hover {
   cursor: pointer;
   color: #3c64b1;
   text-decoration: underline;
+  transition: 0.3s;
 }
 
 .card {
@@ -186,5 +183,28 @@ textarea {
     display: flex;
     width: 100%;
     flex-direction: column;
+  }
+
+  li {
+    margin-left: 75px;
+    margin-right: 100px;
+    padding: 20px 10px;
+  }
+  li:active{
+    background-color: var(--blue);
+    color: whitesmoke;
+    border-radius: 5px;
+
+  }
+  li:hover{
+    background-color: var(--blue);
+    color: whitesmoke;
+    border-radius: 5px;
+    transition: 0.3s
+
+  }
+
+  ul {
+    padding: 0;
   }
 }
