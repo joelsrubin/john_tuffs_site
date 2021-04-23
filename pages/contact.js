@@ -2,14 +2,19 @@ import styles from '../styles/contact.module.css';
 import { useState } from 'react';
 import Form from './components/Form';
 import Image from 'next/image';
+import Loader from "react-loader-spinner";
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-
+  const handleSubmitting = () => {
+    setTimeout(() => { setSubmitted(true); }, 2000);
+    setSubmitting(true);
+  };
 
 
   const handleSubmit = (e) => {
@@ -32,7 +37,8 @@ export default function Contact() {
 
       })
       .catch((error) => console.error(error));
-    setSubmitted(true);
+    setSubmitting(true);
+    handleSubmitting();
   };
 
   const componentRender = () => {
@@ -40,7 +46,20 @@ export default function Contact() {
       return (
         <div className={styles.sent}>
           <h1>Submitted</h1>
-          <Image src="/blueCheck.png" alt="check" width="64" height="64" />
+          <Image src="/Vector.svg" alt="check" width="64" height="64" />
+        </div>
+      );
+    } else if (submitting && !submitted) {
+      return (
+        <div className={styles.sent}>
+          <h1>Sending...</h1>
+          <Loader
+            type="ThreeDots"
+            color="#3c64b1"
+            height={64}
+            width={64}
+            timeout={2000} //3 secs
+          />
         </div>
       );
     } else {

@@ -7,8 +7,10 @@ import { useState, useEffect } from 'react';
 export default function Layout({ children }) {
 
   const [page, setPage] = useState('Home');
+  const [clicked, setClicked] = useState(false);
   useEffect(() => {
     setPage(children.type.name);
+    setClicked(false);
   }, [children]);
 
   console.log('page is: ', page);
@@ -24,7 +26,12 @@ export default function Layout({ children }) {
           <Link href="/">
             <span className={styles.title}>NEW YORK PRENUPS</span>
           </Link>
-          <ul className={styles.list}>
+          <div className={clicked ? styles.hamburgerMenuClicked : styles.hamburgerMenu} onClick={() => setClicked(!clicked)}>
+            <div className={styles.slice}></div>
+            <div className={styles.slice}></div>
+            <div className={styles.slice}></div>
+          </div>
+          <ul className={clicked ? styles.clickedList : styles.list}>
             <Link href="/">
               <li className={page === 'Home' ? styles.clicked : styles.unclicked}>Home</li>
             </Link>
