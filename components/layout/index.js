@@ -2,25 +2,33 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from './header.module.css';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 
 export default function Layout({ children }) {
 
   const [page, setPage] = useState('Home');
   const [clicked, setClicked] = useState(false);
-  const [width, setWidth] = useState(700);
+  const [width, setWidth] = useState(600);
+
+
+
   useEffect(() => {
     setPage(children.type.name);
     setClicked(!clicked);
   }, [children]);
-  function handleWindowSizeChange() {
+
+  const handleWindowSizeChange = () => {
     setWidth(window.innerWidth);
-  }
+  };
+
   useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener('resize', handleWindowSizeChange);
+
     return () => {
       window.removeEventListener('resize', handleWindowSizeChange);
+
     };
   }, []);
 
@@ -39,13 +47,12 @@ export default function Layout({ children }) {
           <Link href="/">
             <span className={styles.title}>NEW YORK PRENUPS</span>
           </Link>
-          <div className={clicked ? styles.hamburgerMenuClicked : styles.hamburgerMenu} onClick={() => setClicked(!clicked)}>
+          <div className={styles.hamburgerMenuClicked} onClick={() => setClicked(!clicked)}>
             <div className={styles.slice}></div>
             <div className={styles.slice}></div>
             <div className={styles.slice}></div>
           </div>
           <ul className={!isMobile ? styles.list : styles.hidden}>
-
             <Link href="/">
               <li className={page === 'Home' ? styles.clicked : styles.unclicked}>Home</li>
             </Link>
@@ -59,9 +66,9 @@ export default function Layout({ children }) {
               <li className={page === 'Contact' ? styles.clicked : styles.unclicked}>Contact</li>
             </Link>
           </ul>
-          <ul className={isMobile ? styles.mobileList : styles.hidden} style={clicked ? { transform: "translateX(-100%)", padding: "40px" } : { transform: "translateX(0)" }}>
+          <ul className={isMobile ? styles.mobileList : styles.hidden} style={clicked ? { transform: "translateX(-105%)", padding: "40px" } : { transform: "translateX(0)" }}>
             <h1 onClick={() => setClicked(!clicked)} style={isMobile ? {
-              display: "block",
+              display: "inline",
               cursor: "pointer",
               fontSize: "16px",
               position: "absolute",

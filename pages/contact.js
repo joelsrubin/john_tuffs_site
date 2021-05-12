@@ -23,7 +23,7 @@ export default function Contact() {
       email,
       message
     };
-    e.preventDefault();
+
     fetch('/api/form', {
       method: 'POST',
       headers: {
@@ -64,7 +64,7 @@ export default function Contact() {
       );
     } else {
       return (
-        <Form setName={setName} setEmail={setEmail} setMessage={setMessage} handleSubmit={handleSubmit} />
+        <Form setName={setName} setEmail={setEmail} setMessage={setMessage} onSubmit={handleSubmit} />
       );
     }
   };
@@ -78,8 +78,10 @@ export default function Contact() {
         </div>
       </main>
       <main className={styles.bottom}>
+        {/* <iframe src="https://cdn.forms-content.sg-form.com/3a21efda-b36d-11eb-a5d4-d25f9f925d65" /> */}
         <div>
           <h1>Next steps</h1>
+
         </div>
       </main>
     </div>

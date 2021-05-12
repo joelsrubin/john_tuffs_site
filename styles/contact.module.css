@@ -32,9 +32,9 @@
 }
 
 .label {
-  font-size: 24;
-  text-align: center;
-  margin: 10px;
+  font-size: 20;
+  text-align: left;
+  margin: 15px 0px 8px 0px;
   font-weight: 700;
 }
 
@@ -43,15 +43,19 @@
   outline: none;
   width: 50%;
   align-self: center;
-  border: none;
+  margin-top: 30px;
   color: var(--black);
   background: #ECEAEA;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 50px;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  border: 1px solid rgb(173, 167, 167);
+  border-radius: 2px;
+  margin-bottom: 30px;
+  transition: 0.3s;
 }
 
 .submit:hover{
-  background: white;
+  background: #e4e0e0;
+  border: 1px solid rgb(158, 153, 153);
 }
 
 .sent {
